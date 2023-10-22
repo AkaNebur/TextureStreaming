@@ -113,13 +113,6 @@ public:
         InitializeTextureStreaming();
     }
 
-    void Start() {
-        if (PhotonNetwork::IsConnected) {
-            std::thread streamThread(&TextureStreamer::CaptureAndSendTexture, this);
-            streamThread.detach();
-        }
-    }
-
     void StartStreaming() {
         if (PhotonNetwork::IsConnected) {
             std::thread streamThread(&TextureStreamer::CaptureAndSendTexture, this);
